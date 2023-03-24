@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,18 +20,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserDao userDao;
 
-    private final PasswordConfig passwordConfig;
-
+//    private final PasswordConfig passwordConfig;
+private final PasswordEncoder passwordEncoder;
     @Autowired
-    public UserServiceImpl(UserDao userDao, PasswordConfig passwordConfig) {
+    public UserServiceImpl(UserDao userDao, PasswordConfig passwordConfig, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
-        this.passwordConfig = passwordConfig;
+//        this.passwordConfig = passwordConfig;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
     @Override
     public void add(User user, Set<Role> roles) {
-        user.setPassword(passwordConfig.passwordEncoder().encode(user.getPassword()));
+//        user.setPassword(passwordConfig.passwordEncoder().encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         userDao.add(user, roles);
     }
 
@@ -43,7 +47,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Transactional
     @Override
     public User change(User user, Set<Role> roles) {
-        user.setPassword(passwordConfig.passwordEncoder().encode(user.getPassword()));
+//        user.setPassword(passwordConfig.passwordEncoder().encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userDao.change(user, roles);
     }
 
