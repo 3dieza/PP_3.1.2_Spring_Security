@@ -1,4 +1,4 @@
-package com.tim.spring_security.Config;
+package com.tim.spring_security.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

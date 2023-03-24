@@ -1,7 +1,7 @@
-package com.tim.spring_security.Service;
+package com.tim.spring_security.service;
 
-import com.tim.spring_security.Dao.RoleDao;
-import com.tim.spring_security.Model.Role;
+import com.tim.spring_security.dao.RoleDao;
+import com.tim.spring_security.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

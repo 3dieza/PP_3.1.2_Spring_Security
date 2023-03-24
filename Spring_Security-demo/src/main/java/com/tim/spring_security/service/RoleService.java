@@ -1,11 +1,11 @@
-package com.tim.spring_security.Dao;
+package com.tim.spring_security.service;
 
-import com.tim.spring_security.Model.Role;
+import com.tim.spring_security.model.Role;
 
 import java.util.List;
 import java.util.Set;
 
-public interface RoleDao {
+public interface RoleService {
     public Set<Role> findRoles(List<Long> roles);
 
     public List<Role> getAllRoles();

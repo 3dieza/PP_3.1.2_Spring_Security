@@ -1,4 +1,4 @@
-package com.tim.spring_security.Config;
+package com.tim.spring_security.config;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

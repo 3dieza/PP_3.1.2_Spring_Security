@@ -1,6 +1,6 @@
-package com.tim.spring_security.Service;
+package com.tim.spring_security.service;
 
-import com.tim.spring_security.Dao.UserDao;
+import com.tim.spring_security.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

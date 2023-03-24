@@ -1,6 +1,6 @@
-package com.tim.spring_security.Dao;
+package com.tim.spring_security.dao;
 
-import com.tim.spring_security.Model.Role;
+import com.tim.spring_security.model.Role;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -18,9 +18,11 @@ public class RoleDaoImp implements RoleDao {
 
 
     public Set<Role> findRoles(List<Long> roles) {
-        TypedQuery<Role> q = entityManager.createQuery("select r from Role r where r.id in :role", Role.class);
+//        TypedQuery<Role> q = entityManager.createQuery("select r from Role r where r.id in :role", Role.class);
+        TypedQuery<Role> q = entityManager.createQuery("select distinct r from Role r join fetch r.users u where r.id in :role", Role.class);
         q.setParameter("role", roles);
         return new HashSet<>(q.getResultList());
+
     }
 
     public List<Role> getAllRoles() {

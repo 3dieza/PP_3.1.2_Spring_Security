@@ -1,8 +1,8 @@
-package com.tim.spring_security.Controller;
+package com.tim.spring_security.controller;
 
-import com.tim.spring_security.Model.User;
-import com.tim.spring_security.Service.RoleService;
-import com.tim.spring_security.Service.UserService;
+import com.tim.spring_security.model.User;
+import com.tim.spring_security.service.RoleService;
+import com.tim.spring_security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

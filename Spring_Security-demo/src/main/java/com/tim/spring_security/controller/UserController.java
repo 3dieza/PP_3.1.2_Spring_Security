@@ -1,6 +1,6 @@
-package com.tim.spring_security.Controller;
+package com.tim.spring_security.controller;
 
-import com.tim.spring_security.Service.UserServiceImpl;
+import com.tim.spring_security.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

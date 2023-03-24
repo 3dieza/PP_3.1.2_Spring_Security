@@ -1,10 +1,11 @@
-package com.tim.spring_security.Model;
+package com.tim.spring_security.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -129,5 +130,18 @@ public class User implements UserDetails {
 
     public UserDetails fromUser() {
         return new org.springframework.security.core.userdetails.User(email, password, getAuthorities());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return id.equals(user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

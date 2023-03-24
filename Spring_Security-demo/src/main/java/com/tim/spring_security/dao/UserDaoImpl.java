@@ -1,7 +1,7 @@
-package com.tim.spring_security.Dao;
+package com.tim.spring_security.dao;
 
-import com.tim.spring_security.Model.Role;
-import com.tim.spring_security.Model.User;
+import com.tim.spring_security.model.Role;
+import com.tim.spring_security.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -40,13 +40,18 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> listUsers() {
-        return entityManager.createQuery("select u from User u", User.class).getResultList();
+//        return entityManager.createQuery("select u from User u", User.class).getResultList();
+        return entityManager.createQuery("select distinct u from User u join fetch u.roles", User.class).getResultList();
+
     }
 
     @Override
     public User findUserByName(String name) {
-        Query query = entityManager.createQuery("select u from User u where u.name=:name", User.class);
-        query.setParameter("name", name);
-        return (User) query.getSingleResult();
+//        return entityManager.createQuery("select u from User u where u.name=:name", User.class);
+        return entityManager.createQuery("select u from User u join fetch u.roles where u.name=:name", User.class)
+                .setParameter("name", name)
+                .getSingleResult();
+
+
     }
 }

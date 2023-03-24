@@ -1,7 +1,7 @@
-package com.tim.spring_security.Dao;
+package com.tim.spring_security.dao;
 
-import com.tim.spring_security.Model.Role;
-import com.tim.spring_security.Model.User;
+import com.tim.spring_security.model.Role;
+import com.tim.spring_security.model.User;
 
 import java.util.List;
 import java.util.Set;

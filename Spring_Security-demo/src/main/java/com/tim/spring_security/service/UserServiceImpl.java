@@ -1,9 +1,9 @@
-package com.tim.spring_security.Service;
+package com.tim.spring_security.service;
 
-import com.tim.spring_security.Config.PasswordConfig;
-import com.tim.spring_security.Dao.UserDao;
-import com.tim.spring_security.Model.Role;
-import com.tim.spring_security.Model.User;
+import com.tim.spring_security.config.PasswordConfig;
+import com.tim.spring_security.dao.UserDao;
+import com.tim.spring_security.model.Role;
+import com.tim.spring_security.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
