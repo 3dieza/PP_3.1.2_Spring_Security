@@ -1,6 +1,5 @@
 package com.tim.spring_security.service;
 
-import com.tim.spring_security.config.PasswordConfig;
 import com.tim.spring_security.dao.UserDao;
 import com.tim.spring_security.model.Role;
 import com.tim.spring_security.model.User;
@@ -19,20 +18,17 @@ import java.util.Set;
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserDao userDao;
+    private final PasswordEncoder passwordEncoder;
 
-//    private final PasswordConfig passwordConfig;
-private final PasswordEncoder passwordEncoder;
     @Autowired
-    public UserServiceImpl(UserDao userDao, PasswordConfig passwordConfig, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserDao userDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
-//        this.passwordConfig = passwordConfig;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
     @Override
-    public void add(User user, Set<Role> roles) {
-//        user.setPassword(passwordConfig.passwordEncoder().encode(user.getPassword()));
+    public void add(User user, Set < Role > roles) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userDao.add(user, roles);
@@ -46,14 +42,13 @@ private final PasswordEncoder passwordEncoder;
 
     @Transactional
     @Override
-    public User change(User user, Set<Role> roles) {
-//        user.setPassword(passwordConfig.passwordEncoder().encode(user.getPassword()));
+    public User change(User user, Set < Role > roles) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userDao.change(user, roles);
     }
 
     @Override
-    public List<User> listUsers() {
+    public List < User > listUsers() {
         return userDao.listUsers();
     }
 
